@@ -25,9 +25,9 @@ namespace Primitives.SimplePrimitives
             Rect r3 = new Rect { x = 20, y = 170, width = 100, height = 30 };
 
             string additionalInfo = "Random Rectangles [No Clipping]";
-            for (int i = 0; i < 400; i++)
+            for (int i = 0; i < 200; i++)
             {
-                if (i == 100)
+                if (i == 50)
                 {
                     additionalInfo = "Clipping inside region [20,20,120,120]";
                     DullExistingLines(fullScreenBitmap, r0);
@@ -35,14 +35,14 @@ namespace Primitives.SimplePrimitives
                     fullScreenBitmap.SetClippingRectangle(r1.x, r1.y, r1.width, r1.height);
                     fullScreenBitmap.Flush();
                 }
-                if (i == 200)
+                if (i == 100)
                 {
                     additionalInfo = "Clipping inside region [180,80,280,180]";
                     ResetClippingAndDrawClippingRectangular(fullScreenBitmap, r2);
                     fullScreenBitmap.SetClippingRectangle(r2.x, r2.y, r2.width, r2.height);
                     fullScreenBitmap.Flush();
                 }
-                if (i == 300)
+                if (i == 150)
                 {
                     additionalInfo = "Clipping inside region [20,170,120,200]";
                     ResetClippingAndDrawClippingRectangular(fullScreenBitmap, r3);

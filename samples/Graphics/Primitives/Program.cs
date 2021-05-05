@@ -1,7 +1,12 @@
 ﻿using System.Threading;
+using nanoFramework.Presentation.Media;
 using nanoFramework.UI;
 using Primitives.SimplePrimitives;
-
+using System.Device.Gpio;
+using PuzzleSample;
+using System;
+using nanoFramework.Presentation;
+using TouchInputSample;
 
 namespace Primitives
 {
@@ -9,15 +14,22 @@ namespace Primitives
     {
         public static void Main()
         {
-            int delayBetween = 1100;
+            //System.Device.Gpio.GpioController gpioController = new GpioController();
+            //GpioPin backLight = gpioController.OpenPin(5, PinMode.Output);
+            //backLight.Write(PinValue.High);
 
-
-            // Get full screen bitmap from displayControl to draw on.
-            Bitmap fullScreenBitmap = DisplayControl.FullScreen;  
-
-            fullScreenBitmap.Clear();
+            SimpleTouch();
+   //         PuzzleProgram();
 
             Font DisplayFont = Resource.GetFont(Resource.FontResources.SegoeUIRegular12);
+            Bitmap fullScreenBitmap = DisplayControl.FullScreen;
+            fullScreenBitmap.Clear();
+
+            int delayBetween = 1100;
+
+            // Get full screen bitmap from displayControl to draw on.
+
+            Thread.Sleep(delayBetween);
 
             while (true)
             {
@@ -64,5 +76,42 @@ namespace Primitives
                 Thread.Sleep(Timeout.Infinite);
             }
         }
+
+
+        static SimpleTouchInput myApplicationSimpleTouch;
+        private static void SimpleTouch()
+        {
+            myApplicationSimpleTouch = new SimpleTouchInput();
+
+            // Touch notifications are not turned on by default.  You need to 
+            // explicitly inform the Touch engine that you want touch events 
+            // to be pumped to your direction, and you want to work with the 
+            // rest of the architecture.
+
+            Touch.Initialize(myApplicationSimpleTouch);
+
+            Window mainWindow = myApplicationSimpleTouch.CreateWindow();
+
+            // Start the application.
+            myApplicationSimpleTouch.Run(mainWindow);
+        }
+
+        //    static MyPuzzle myApplicationPuzzle;
+        //    private static void PuzzleProgram()
+        //    {
+        //        myApplicationPuzzle = new MyPuzzle();
+
+        //        // Touch notifications are not turned on by default.  You need to 
+        //        // explicitly inform the Touch engine that you want touch events 
+        //        // to be pumped to your direction, and you want to work with the 
+        //        // rest of the architecture.
+
+        //        Touch.Initialize(myApplicationPuzzle);
+
+        //        Window mainWindow = myApplicationPuzzle.CreateWindow();
+
+        //        // Start the application.
+        //        myApplicationPuzzle.Run(mainWindow);
+        //    }
     }
 }

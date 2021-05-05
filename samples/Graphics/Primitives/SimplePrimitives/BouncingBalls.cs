@@ -6,6 +6,10 @@ namespace Primitives.SimplePrimitives
 {
     public class BouncingBalls
     {
+        byte[] soccerBallBytes;
+
+        Bitmap soccerBall;
+
         struct Rectangle
         {
             public int X;
@@ -28,12 +32,19 @@ namespace Primitives.SimplePrimitives
         public BouncingBalls(Bitmap fullScreenBitmap, Font DisplayFont)
         {
             ScreenBitmap = fullScreenBitmap;
+            soccerBallBytes = Resource.GetBitmap(Resource.BitmapResources.SoccerBall);
+            soccerBall = new Bitmap(soccerBallBytes, Bitmap.BitmapImageType.Gif);
+            // Make the background of the soccer ball transparent
+            soccerBall.MakeTransparent(soccerBall.GetPixel(0, 0));
+
+
             SetupBalls();
 
-            for (int iCount = 0; iCount < 180; iCount++)
+            for (int iCount = 0; iCount < 80; iCount++)
             {
                 MoveBalls();
-                DrawBalls();
+                //            DrawBalls();
+                DrawGifBall();
             }
 
         }
@@ -49,7 +60,7 @@ namespace Primitives.SimplePrimitives
 
             for (int iBall = 0; iBall < num_balls; iBall++)
             {
-                int width = rand.Next(3, 50);
+                int width = rand.Next(10, 50);
                 BallLocation[iBall] = new Rectangle
                 {
                     X = rand.Next(0, ScreenBitmap.Width - 2 * width),
@@ -120,6 +131,18 @@ namespace Primitives.SimplePrimitives
                                               0, 0, 0, 0, 0, 0, Bitmap.OpacityOpaque);
             }
             ScreenBitmap.Flush();
+        }
+
+
+        private void DrawGifBall()
+        {
+            ScreenBitmap.Clear();
+            for (int i = 0; i < BallLocation.Length; i++)
+            {
+                ScreenBitmap.StretchImage(BallLocation[i].X, BallLocation[i].Y, soccerBall, BallLocation[i].Width, BallLocation[i].Height, Bitmap.OpacityOpaque);
+            }
+            ScreenBitmap.Flush();
+
         }
     }
 }

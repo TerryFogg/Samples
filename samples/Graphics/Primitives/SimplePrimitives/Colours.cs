@@ -224,7 +224,7 @@ namespace Primitives.SimplePrimitives
                 if (remainder == 3)
                 {
                     fullScreenBitmap.Flush();
-                    Thread.Sleep(700);
+                    Thread.Sleep(300);
                 }
                 displayFourAtATime++;
             }

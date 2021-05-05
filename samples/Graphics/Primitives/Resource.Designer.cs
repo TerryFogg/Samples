@@ -8,9 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using nanoFramework.UI;
-using System;
-
 namespace Primitives
 {
     
@@ -28,9 +25,9 @@ namespace Primitives
                 return Resource.manager;
             }
         }
-        internal static nanoFramework.UI.Bitmap GetBitmap(Resource.BitmapResources id)
+        internal static byte[] GetBitmap(Resource.BitmapResources id)
         {
-            return ((nanoFramework.UI.Bitmap)(nanoFramework.Runtime.Native.ResourceUtility.GetObject(ResourceManager, id)));
+            return ((byte[])(nanoFramework.Runtime.Native.ResourceUtility.GetObject(ResourceManager, id)));
         }
         internal static nanoFramework.UI.Font GetFont(Resource.FontResources id)
         {
@@ -41,6 +38,23 @@ namespace Primitives
             return ((string)(nanoFramework.Runtime.Native.ResourceUtility.GetObject(ResourceManager, id)));
         }
         [System.SerializableAttribute()]
+        internal enum BitmapResources : short
+        {
+            b3 = -28145,
+            b4 = -27204,
+            b9 = -26019,
+            Yellow_flower = -24067,
+            b5 = -20880,
+            Birds = -14105,
+            b2 = -8183,
+            SoccerBall = 5884,
+            b1 = 10850,
+            Image1 = 21113,
+            b6 = 26679,
+            b7 = 31481,
+            b8 = 31966,
+        }
+        [System.SerializableAttribute()]
         internal enum StringResources : short
         {
             strnSmallFont = -19509,
@@ -49,7 +63,6 @@ namespace Primitives
             strCourierRegular10 = 19139,
             strSegoeUIRegular12 = 25622,
         }
-
         [System.SerializableAttribute()]
         internal enum FontResources : short
         {
@@ -60,9 +73,5 @@ namespace Primitives
             CourierRegular10 = 27752,
             MatrixFont = 28174,
         }
-        internal enum BitmapResources : short
-        {
-        }
-
     }
 }

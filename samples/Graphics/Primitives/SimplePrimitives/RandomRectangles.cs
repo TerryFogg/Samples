@@ -13,7 +13,7 @@ namespace Primitives.SimplePrimitives
             fullScreenBitmap.Flush();
             int xCornerRadius;
             int yCornerRadius;
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 70; i++)
             {
                 Color fillColor = (nanoFramework.Presentation.Media.Color)random.Next(0xFFFFFF);
 
